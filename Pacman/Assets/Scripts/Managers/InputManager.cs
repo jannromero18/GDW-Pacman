@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class InputManager{
 
-    private static GameControls _gameControls;
+   private static GameControls _gameControls;
 
    public static void Init(Player myPlayer){
       _gameControls = new GameControls();
@@ -12,8 +12,12 @@ public static class InputManager{
       _gameControls.Permanent.Enable(); 
 
       _gameControls.InGame.Movement.performed += c => { //look for input
-          myPlayer.SetMovementDirection(c.ReadValue<Vector2>()); //action performed
+          //action performed
        };
 
+   }
+
+    public static void SetGameControls(){
+     _gameControls.InGame.Enable();
    }
 }

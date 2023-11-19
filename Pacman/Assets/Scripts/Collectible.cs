@@ -7,7 +7,7 @@ public class Collectible : MonoBehaviour
    private void OnTriggerEnter(Collider other){ //box collider isTrigger 
         if(other.transform.tag == "Player"){
             Destroy(gameObject); 
-            Player.score++;
+            Player._score++;
         }
     } 
 }

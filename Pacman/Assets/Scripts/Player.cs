@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
 
     [SerializeField] private float _speed;
-    private Vector2 _moveDirection;
 
     void Start(){
         InputManager.Init(this); //puts the game controls on the player
@@ -23,10 +22,6 @@ public class Player : MonoBehaviour
     void Update(){
         print("score " + _score);
 
-        transform.position += speed * Time.deltaTime * _moveDirection;
     }
 
-     public void SetMovementDirection(Vector2 currentDirection){
-        _moveDirection = currentDirection;
-    }
 }
