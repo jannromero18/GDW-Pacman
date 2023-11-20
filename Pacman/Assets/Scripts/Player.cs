@@ -6,22 +6,31 @@ public class Player : MonoBehaviour
 {
     public static int _score = 0;
 
-    private Rigidbody rb;
+    private Rigidbody2D rb;
+
+    float input;
 
     [SerializeField] private float _speed;
 
     void Start(){
-        InputManager.Init(this); //puts the game controls on the player
-        InputManager.SetGameControls();
+        //InputManager.Init(this); //puts the game controls on the player
+       // InputManager.SetGameControls();
 
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
 
 
     }
     
     void Update(){
         print("score " + _score);
-
     }
 
+     void FixedUpdate(){
+        float moveHorizontal = Input.GetAxis ("Horizontal");
+        float moveVertical = Input.GetAxis ("Vertical");
+
+        Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
+
+        rb.AddForce (movement * _speed);    
+     }
 }
