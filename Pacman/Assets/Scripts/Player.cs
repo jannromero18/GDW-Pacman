@@ -8,15 +8,15 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    float input;
-
     [SerializeField] private float _speed;
+    private Vector2 _moveDirection;
+
     public int _maxLives = 3;
     public static int _currentLives;
 
     void Start(){
-        //InputManager.Init(this); //puts the game controls on the player
-       // InputManager.SetGameControls();
+        InputManager.Init(this); //puts the game controls on the player
+        InputManager.SetGameControls();
 
         rb = GetComponent<Rigidbody2D>();
         _currentLives = _maxLives;
@@ -36,11 +36,11 @@ public class Player : MonoBehaviour
     }
 
      void FixedUpdate(){
-        float moveHorizontal = Input.GetAxis ("Horizontal");
-        float moveVertical = Input.GetAxis ("Vertical");
+        rb.AddForce (_moveDirection * _speed); 
 
-        Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
-
-        rb.AddForce (movement * _speed);    
      }
+
+     public void SetMovementDirection(Vector2 currentDirection){
+        _moveDirection = currentDirection;
+    }
 }

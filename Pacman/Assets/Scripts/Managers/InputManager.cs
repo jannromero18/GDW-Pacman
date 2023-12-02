@@ -9,10 +9,10 @@ public static class InputManager{
    public static void Init(Player myPlayer){
       _gameControls = new GameControls();
 
-      _gameControls.Permanent.Enable(); 
+      _gameControls.InGame.Enable(); 
 
       _gameControls.InGame.Movement.performed += c => { //look for input
-          //action performed
+          myPlayer.SetMovementDirection(c.ReadValue<Vector2>()); //action performed
        };
 
    }
