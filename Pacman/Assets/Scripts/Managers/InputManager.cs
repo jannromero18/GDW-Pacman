@@ -15,6 +15,9 @@ public static class InputManager{
           myPlayer.SetMovementDirection(c.ReadValue<Vector2>()); //action performed
        };
 
+      _gameControls.InGame.Shoot.performed += d => { //look for input
+          myPlayer.Shoot(d.ReadValue<Vector2>());//action performed
+       };
    }
 
     public static void SetGameControls(){

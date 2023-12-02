@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public static int _score = 0;
 
     private Rigidbody2D rb;
+    [SerializeField] private Rigidbody myBullet;
 
     [SerializeField] private float _speed;
     private Vector2 _moveDirection;
@@ -43,4 +44,9 @@ public class Player : MonoBehaviour
      public void SetMovementDirection(Vector2 currentDirection){
         _moveDirection = currentDirection;
     }
+
+    public void Shoot(Vector2 currentDirection){
+        Instantiate(myBullet, currentDirection, Quaternion.identity);
+    }
+
 }
