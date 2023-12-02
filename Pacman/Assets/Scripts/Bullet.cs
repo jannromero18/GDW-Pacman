@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-   [SerializeField] private Rigidbody myBullet;
-
+   
+    private void OnTriggerEnter2D(Collider2D other){ //box collider isTrigger 
+        if(other.transform.tag == "Barrier" || other.transform.tag == "Enemy"){
+            Destroy(gameObject); 
+        }
+    } 
 }
