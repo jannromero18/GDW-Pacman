@@ -7,13 +7,14 @@ public class Player : MonoBehaviour
     public static int _score = 0;
 
     private Rigidbody2D rb;
+    //[SerializeField] private Rigidbody2D myBullet;
 
     [SerializeField] private float _speed;
     private Vector2 _moveDirection;
     private Vector2 mousePosition;
 
+    //[SerializeField] private float _bulletSpeed;
     public Weapon weapon;
-    public static int _currentAmmo;
 
     public static bool canShoot;
 
@@ -28,13 +29,11 @@ public class Player : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         _currentLives = _maxLives;
-        _currentAmmo = 0;
 
     }
     
     void Update(){
         print("score " + _score);
-        print("ammo " + _currentAmmo);
 
         if(_currentLives > 0){
             print("lives " + _currentLives);
@@ -43,12 +42,8 @@ public class Player : MonoBehaviour
             print("Game Over");
         }
         
-        if(Input.GetMouseButtonDown(0) && canShoot && _currentAmmo > 0){
+        if(Input.GetMouseButtonDown(0) && canShoot){
             weapon.Fire();
-            _currentAmmo--;
-        }
-        else{
-            print("I need more boolets");
         }
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
