@@ -70,4 +70,16 @@ public class Enemy : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other){ 
+        if(other.transform.tag == "Player"){
+            Player._currentLives--;
+        }
+    } 
+
+    private void OnTriggerExit2D(Collider2D other){ 
+        if(other.transform.tag == "Bullet"){
+            Destroy(gameObject); 
+        }
+    } 
 }
