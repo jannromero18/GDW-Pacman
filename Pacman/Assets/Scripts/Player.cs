@@ -16,12 +16,16 @@ public class Player : MonoBehaviour
     //[SerializeField] private float _bulletSpeed;
     public Weapon weapon;
 
+    public static bool canShoot;
+
     public int _maxLives = 3;
     public static int _currentLives;
 
     void Start(){
         InputManager.Init(this); //puts the game controls on the player
         InputManager.SetGameControls();
+
+        canShoot = false;
 
         rb = GetComponent<Rigidbody2D>();
         _currentLives = _maxLives;
@@ -38,7 +42,7 @@ public class Player : MonoBehaviour
             print("Game Over");
         }
         
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonDown(0) && canShoot){
             weapon.Fire();
         }
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
